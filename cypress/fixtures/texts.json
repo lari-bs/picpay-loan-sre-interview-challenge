@@ -4,5 +4,7 @@
   "formParagraph": "Acesse com seu CPF",
   "helpText": "Se tiver dúvidas, acesse a Central de Ajuda.",
   "requiredFieldError": "*Campo obrigatório",
-  "invalidCpfError": "*CPF Inválido"
+  "invalidCpfError": "*CPF Inválido",
+  "helpPageTitle": "Canais de atendimento PicPay",
+  "helpPageLinkText": "Central de Ajuda"
 }

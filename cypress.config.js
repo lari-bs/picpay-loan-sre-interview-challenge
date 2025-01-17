@@ -6,7 +6,7 @@ module.exports = defineConfig({
   e2e: {
     watchForFileChanges: false,
     baseUrl: 'https://meus-emprestimos.picpay.com',
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 30000,
     viewportWidth: 1280,
     viewportHeight: 720,
     video: false,

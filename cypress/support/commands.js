@@ -29,6 +29,7 @@ Cypress.Commands.add('visitLoanPage', () => {
 
 Cypress.Commands.add('fillCpfAndSubmit', (cpf) => {
     cy.get('[name="cpf"]').clear().type(cpf)
+    cy.screenshot('cpf-preenchido')
     cy.get('button').click()
 })
 

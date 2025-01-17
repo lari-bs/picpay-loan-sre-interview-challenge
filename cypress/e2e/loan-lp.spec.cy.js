@@ -1,5 +1,5 @@
 import texts from '../fixtures/texts.json'
-import {loanPageSelectors as lps} from '../support/selectors'
+import {loanPageSelectors as lps, helpPageSelectors as hps} from '../support/selectors'
 
 const viewports = [
     {device: 'Desktop', width: 1280, height: 720},
@@ -10,7 +10,7 @@ Cypress._.each(viewports, (viewport) => {
     describe(`Loan Landing Page Tests - ${viewport.device}`, () => {
         beforeEach(() => {
             cy.viewport(viewport.width, viewport.height)
-            cy.visitLoanPage() // Usando comando customizado
+            cy.visitLoanPage()
         })
 
         it('Deve conter textos esperados na página não logada', () => {
@@ -52,6 +52,24 @@ Cypress._.each(viewports, (viewport) => {
             cy.fillCpfAndSubmit('00000000191')
             cy.wait('@creditReport').its('response.statusCode').should('eq', 401)
             cy.screenshot('erro-acesso-401')
+        })
+
+        it('Deve acessar a Central de Ajuda com sucesso', () => {
+            cy.get(lps.helpLink).click()
+            cy.get(hps.acceptCookies).click()
+            cy.url().should('include', '/canais-de-atendimento')
+            cy.get(hps.pageHeader).should('contain.text', texts.helpPageTitle)
+            cy.screenshot('central-de-ajuda')
+        })
+
+        it(`Deve validar exibição da imagem dependendo da responsividade - ${viewport.device}`, () => {
+            if (viewport.device === 'Desktop') {
+                cy.get(lps.image).should('be.visible')
+                cy.screenshot('imagem-visivel')
+            } else if (viewport.device === 'iPhone X') {
+                cy.get(lps.image).should('not.be.visible')
+                cy.screenshot('imagem-nao-visivel')
+            }
         })
     })
 })

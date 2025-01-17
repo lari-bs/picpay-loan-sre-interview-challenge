@@ -7,4 +7,11 @@ export const loanPageSelectors = {
     button: 'button',
     matField: 'mat-form-field',
     matError: 'mat-error',
+    helpLink: '.text-primary-700',
+    image: 'img.h-full.w-full.object-cover.object-right-top'
 }
+
+export const helpPageSelectors = {
+    pageHeader: 'hgroup',
+    acceptCookies: '#onetrust-accept-btn-handler',
+};
